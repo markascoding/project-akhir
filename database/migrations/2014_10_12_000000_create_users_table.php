@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->enum('role', ['admin', 'kepsek', 'guru_piket']);
             $table->enum('status', ['active', 'blocked']);
-            $table->rememberToken();
+            // $table->rememberToken();
             $table->timestamps();
         });
     }

@@ -2,21 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\TeacherRequest;
-use App\Models\Teacher;
 use Illuminate\Http\Request;
 
-class TeacherController extends Controller
+class DashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $data = [
-            'teachers' => Teacher::query()->orderBy('id', 'desc')->get(),
-        ];
-        return view('admin.teacher.index', $data);
+        return view('admin.dashboard.index');
     }
 
     /**
@@ -30,11 +25,9 @@ class TeacherController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(TeacherRequest $request)
+    public function store(Request $request)
     {
-        $data = $request->validated();
-        Teacher::query()->create($data);
-        return redirect()->route('teacher.index')->with('success', 'Data berhasil disimpan');
+        //
     }
 
     /**
@@ -42,7 +35,6 @@ class TeacherController extends Controller
      */
     public function show(string $id)
     {
-
         //
     }
 
@@ -51,10 +43,7 @@ class TeacherController extends Controller
      */
     public function edit(string $id)
     {
-        // return dd($id);
-        $data = Teacher::query()->findOrFail($id);
-        return dd($data);
-        return response()->json($data);
+        //
     }
 
     /**
@@ -70,7 +59,6 @@ class TeacherController extends Controller
      */
     public function destroy(string $id)
     {
-        Teacher::query()->findOrFail($id)->delete();
-        return redirect()->route('teacher.index')->with('success', 'Data berhasil dihapus');
+        //
     }
 }

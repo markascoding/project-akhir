@@ -20,7 +20,6 @@ class TeacherFactory extends Factory
             'nip' => $this->faker->randomNumber(5, true),
             'nama_guru' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
-            'password' => bcrypt('secret'),
 
         ];
     }

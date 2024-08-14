@@ -16,8 +16,6 @@ return new class extends Migration
             $table->string('nip')->nullable();
             $table->string('nama_guru');
             $table->string('email')->unique();
-            $table->string('password');
-            $table->rememberToken();
             $table->timestamps();
         });
     }
