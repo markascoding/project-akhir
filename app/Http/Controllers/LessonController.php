@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LessonRequest;
+use App\Models\Lesson;
 use Illuminate\Http\Request;
 
 class LessonController extends Controller
@@ -11,10 +13,12 @@ class LessonController extends Controller
      */
     public function index()
     {
-        return view('lesson.index');
+        $data = [
+            'lessons' => Lesson::query()->orderBy('id', 'desc')->get(),
+        ];
+        return view('lesson.index', $data);
     }
-
-    /**
+        /**
      * Show the form for creating a new resource.
      */
     public function create()
@@ -25,9 +29,11 @@ class LessonController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(LessonRequest $request)
     {
-        //
+        $data = $request->validated();
+        Lesson::query()->create($data);
+        return redirect()->route('lesson.index')->with('success', 'Data berhasil disimpan');
     }
 
     /**
@@ -43,15 +49,19 @@ class LessonController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $lesson = Lesson::query()->findOrFail($id);
+        return response()->json($lesson);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(LessonRequest $request, string $id)
     {
-        //
+        $data = $request->validated();
+        Lesson::query()->findOrFail($id)->update($data);
+        return response()->json(['success' => 'Data berhasil diubah']);
+        // return redirect()->route('lesson.index')->with('success', 'Data berhasil diubah');
     }
 
     /**
@@ -59,6 +69,7 @@ class LessonController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Lesson::query()->findOrFail($id)->delete();
+        return redirect()->route('lesson.index')->with('success', 'Data berhasil dihapus');
     }
 }
