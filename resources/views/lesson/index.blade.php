@@ -85,7 +85,7 @@
                         @csrf
                         <div class="mb-3">
                             <label for="mata_pelajaran">Nama Mata Pelajaran</label>
-                            <input type="text" name="mata_pelajaran" class="form-control" id="mata_pelajaran"
+                            <input type="text" name="mata_pelajaran" class="form-control"
                                 placeholder="Nama Mata Pelajaran">
                         </div>
                 </div>
@@ -169,8 +169,6 @@
             e.preventDefault();
             var id = $(this).data('id');
             var url = "{{ route('lesson.edit', ':id') }}".replace(':id', id);
-            $('modal-ubah').attr('action, url');
-            window.location.href = url
             $.ajax({
                 type: "GET",
                 url: url,
@@ -190,7 +188,7 @@
 
             let id = $('#id').val();
             let mata_pelajaran = $('#mata_pelajaran').val();
-
+            let token = $("meta[name='csrf-token']").attr("content");
             var url = "{{ route('lesson.update', ':id') }}".replace(':id', id);
 
             $.ajax({
@@ -199,6 +197,7 @@
                 data: {
                     "id": id,
                     "mata_pelajaran": mata_pelajaran,
+                    "_token": token
                 },
                 success: function(response) {
                     $('#modal-ubah').modal('hide');
