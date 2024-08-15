@@ -203,6 +203,7 @@
                     $('#modal-ubah').find('#nama_guru').val(data.nama_guru);
                     $('#modal-ubah').find('#email').val(data.email);
                 }
+
             });
 
         });
