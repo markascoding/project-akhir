@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\LessonController;
 use App\Http\Controllers\DashboardController;
 
 /*
@@ -23,6 +24,7 @@ use App\Http\Controllers\DashboardController;
 Route::resources([
     'dashboard' => DashboardController::class,
     'teacher' => TeacherController::class,
+    'lesson' => LessonController::class,
 ]);
 
 Auth::routes();
