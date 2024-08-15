@@ -19,7 +19,7 @@
         </div>
     @endif
     <div class="btn-group mb-2">
-        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#tambah-data">
             <i class="fas fa-plus"></i> <span>Tambah Data</span>
         </button>
     </div>
@@ -77,7 +77,7 @@
     </div>
 
     <!-- Modal tambah data -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="tambah-data" tabindex="-1" aria-labelledby="tambah-data-label" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -89,16 +89,15 @@
                         @csrf
                         <div class="mb-3">
                             <label for="nip">NIP</label>
-                            <input type="text" name="nip" class="form-control" id="nip" placeholder="NIP">
+                            <input type="text" name="nip" class="form-control" placeholder="NIP">
                         </div>
                         <div class="mb-3">
                             <label for="nama_guru">Nama Guru</label>
-                            <input type="text" name="nama_guru" class="form-control" id="nama_guru"
-                                placeholder="Nama Guru">
+                            <input type="text" name="nama_guru" class="form-control" placeholder="Nama Guru">
                         </div>
                         <div class="mb-3">
                             <label for="email">Email</label>
-                            <input type="email" name="email" class="form-control" id="email" placeholder="Email">
+                            <input type="email" name="email" class="form-control" placeholder="Email">
                         </div>
                 </div>
                 <div class="modal-footer">
@@ -109,7 +108,43 @@
             </div>
         </div>
     </div>
-    <!-- end modal tambah data -->
+
+    <!-- Modal ubah data -->
+    <div class="modal fade" id="modal-ubah" tabindex="-1" aria-labelledby="modal-ubah" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="">Ubah Data Guru</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="update">
+                        <input type="hidden" name="id" id="id">
+                        <div class="mb-3">
+                            <label for="nip">NIP</label>
+                            <input type="text" name="nip" class="form-control" id="nip" placeholder="NIP">
+                        </div>
+                        <div class="mb-3">
+                            <label for="nama_guru">Nama Guru</label>
+                            <input type="text" name="nama_guru" class="form-control" id="nama_guru"
+                                placeholder="Nama Guru">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" class="form-control" id="email"
+                                placeholder="Email">
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button> --}}
+                    <button type="button" class="btn btn-primary btn-update">Ubah</button>
+                </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <!-- end modal ubah data -->
 
 
     <!-- modal hapus  -->
@@ -156,8 +191,53 @@
             e.preventDefault();
             var id = $(this).data('id');
             var url = "{{ route('teacher.edit', ':id') }}".replace(':id', id);
-            window.location.href = url
+            // window.location.href = url;
+            $('#modal-ubah').attr('action', url);
+            $.ajax({
+                type: "GET",
+                url: url,
+                success: function(data) {
+                    $('#modal-ubah').modal('show');
+                    $('#modal-ubah').find('#id').val(data.id);
+                    $('#modal-ubah').find('#nip').val(data.nip);
+                    $('#modal-ubah').find('#nama_guru').val(data.nama_guru);
+                    $('#modal-ubah').find('#email').val(data.email);
+                }
+            });
 
+        });
+    </script>
+    <script>
+        $('.btn-update').click(function(e) {
+            e.preventDefault();
+
+            let id = $('#id').val();
+            let nip = $('#nip').val();
+            let nama_guru = $('#nama_guru').val();
+            let email = $('#email').val();
+            let token = $("meta[name='csrf-token']").attr("content");
+
+            var url = "{{ route('teacher.update', ':id') }}".replace(':id', id);
+
+            $.ajax({
+                url: url,
+                type: 'PUT',
+                data: {
+                    "id": id,
+                    "nip": nip,
+                    "nama_guru": nama_guru,
+                    "email": email,
+                    "_token": token
+                },
+                success: function(response) {
+                    $('#modal-ubah').modal('hide');
+                    location.reload(); // Refresh halaman untuk melihat perubahan
+                },
+                error: function(xhr) {
+                    // Tampilkan pesan error jika diperlukan
+                    console.log("error");
+                }
+            });
         });
     </script>
 @endpush

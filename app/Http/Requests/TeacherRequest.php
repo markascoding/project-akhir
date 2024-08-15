@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class TeacherRequest extends FormRequest
@@ -24,17 +25,17 @@ class TeacherRequest extends FormRequest
         return [
             'nip' => 'required',
             'nama_guru' => 'required',
-            'email' => 'required|email|unique:teachers',
+            'email' => ['required', 'email', Rule::unique('teachers', 'email')->ignore($this->teacher)],
         ];
     }
     public function messages()
     {
         return [
-            'nip.required' => 'NIP wajib diisi',
-            'nama_guru.required' => 'Nama Guru wajib diisi',
-            'email.required' => 'Email wajib diisi',
-            'email.email' => 'Format email salah',
-            'email.unique' => 'Email sudah digunakan',
+            'nip.required' => 'Gagal Tambah Data, NIP wajib diisi',
+            'nama_guru.required' => 'Gagal Tambah Data, Nama Guru wajib diisi',
+            'email.required' => 'Gagal Tambah Data, Email wajib diisi',
+            'email.email' => 'Gagal Tambah Data, Format email salah',
+            'email.unique' => 'Gagal Tambah Data, Email sudah digunakan',
         ];
     }
 }

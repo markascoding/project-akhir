@@ -6,6 +6,8 @@ use App\Http\Requests\TeacherRequest;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
 
+use function Laravel\Prompts\alert;
+
 class TeacherController extends Controller
 {
     /**
@@ -32,6 +34,7 @@ class TeacherController extends Controller
      */
     public function store(TeacherRequest $request)
     {
+
         $data = $request->validated();
         Teacher::query()->create($data);
         return redirect()->route('teacher.index')->with('success', 'Data berhasil disimpan');
@@ -51,20 +54,20 @@ class TeacherController extends Controller
      */
     public function edit(string $id)
     {
-        // return dd($id);
-        $data = Teacher::query()->findOrFail($id);
-        return dd($data);
-        return response()->json($data);
+        $teacher = Teacher::query()->findOrFail($id);
+        return response()->json($teacher);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(TeacherRequest $request, string $id)
     {
-        //
+        $data = $request->validated();
+        Teacher::query()->findOrFail($id)->update($data);
+        return response()->json(['success' => 'Data berhasil diubah']);
+        // return redirect()->route('teacher.index')->with('success', 'Data berhasil diubah');
     }
-
     /**
      * Remove the specified resource from storage.
      */
