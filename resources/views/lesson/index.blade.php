@@ -1,7 +1,7 @@
 @extends('admin.layout')
 
 @section('content')
-    <h1 class="h3 mb-2 text-gray-800">Master Data - Guru</h1>
+    <h1 class="h3 mb-2 text-gray-800">Master Data - Mata Pelajaran</h1>
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
@@ -27,7 +27,7 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Daftar Guru</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Daftar Mata Pelajaran</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -35,36 +35,37 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>NIP</th>
-                            <th>Nama Guru</th>
-                            <th>Email</th>
+                            <th>id</th>
+                            <th>Nama Mata Pelajaran</th>
                             <th>Aksi</th>
-
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
                             <th>No</th>
-                            <th>NIP</th>
-                            <th>Nama Guru</th>
-                            <th>Email</th>
+                            <th>id</th>
+                            <th>Nama Mata Pelajaran</th>
+                            <th>Aksi</th>
+                        </tr>
+                            <th>No</th>
+                            <th>id</th>
+                            <th>Nama Mata Pelajaran</th>
                             <th>Aksi</th>
                         </tr>
                     </tfoot>
                     <tbody>
-                        @foreach ($teachers as $teacher)
+                        @foreach ($lessons as $lesson)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $teacher->nip }}</td>
-                                <td>{{ $teacher->nama_guru }}</td>
-                                <td>{{ $teacher->email }}</td>
+                                <td>{{ $lesson->id }}</td>
+                                <td>{{ $lesson->nama_mata_pelajaran }}</td>
                                 <td class="d-lg-flex gap-2 ">
 
                                     <button type="button" class="btn btn-sm btn-warning btn-edit"
-                                        data-id="{{ $teacher->id }}">
+                                        data-id="{{ $lesson->id }}">
                                         <i class="fas fa-edit"></i>
                                     </button>
-                                    <button data-id="{{ $teacher->id }}" type="button" data-toggle="modal"
+                                    <button data-id="{{ $lesson->id }}" type="button" data-toggle="modal"
                                         data-target="#modal-default" class="btn btn-danger btn-sm btn-delete"><i
                                             class="fas fa-trash"></i></button>
                                 </td>
@@ -81,24 +82,16 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Tambah Data Guru</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Tambah Data Mata Pelajaran</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('teacher.store') }}" method="POST">
+                    <form action="{{ route('lesson.store') }}" method="POST">
                         @csrf
                         <div class="mb-3">
-                            <label for="nip">NIP</label>
-                            <input type="text" name="nip" class="form-control" id="nip" placeholder="NIP">
-                        </div>
-                        <div class="mb-3">
-                            <label for="nama_guru">Nama Guru</label>
-                            <input type="text" name="nama_guru" class="form-control" id="nama_guru"
-                                placeholder="Nama Guru">
-                        </div>
-                        <div class="mb-3">
-                            <label for="email">Email</label>
-                            <input type="email" name="email" class="form-control" id="email" placeholder="Email">
+                            <label for="nama_mata_pelajaran">Nama Mata Pelajaran</label>
+                            <input type="text" name="nama_mata_pelajaran" class="form-control" id="nama_mata_pelajaran"
+                                placeholder="Nama Mata Pelajaran">
                         </div>
                 </div>
                 <div class="modal-footer">
@@ -147,7 +140,7 @@
         $('.btn-delete').click(function(e) {
             e.preventDefault();
             var id = $(this).data('id');
-            var url = "{{ route('teacher.destroy', ':id') }}".replace(':id', id);
+            var url = "{{ route('lesson.destroy', ':id') }}".replace(':id', id);
             $('#form-delete').attr('action', url);
         });
     </script>
@@ -155,7 +148,7 @@
         $('.btn-edit').click(function(e) {
             e.preventDefault();
             var id = $(this).data('id');
-            var url = "{{ route('teacher.edit', ':id') }}".replace(':id', id);
+            var url = "{{ route('lesson.edit', ':id') }}".replace(':id', id);
             window.location.href = url
 
         });
