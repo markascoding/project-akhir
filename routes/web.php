@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\LessonController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\StudyRoomController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,7 @@ Route::resources([
     'dashboard' => DashboardController::class,
     'teacher' => TeacherController::class,
     'lesson' => LessonController::class,
+    'studyroom' => StudyRoomController::class,
 ]);
 
 Auth::routes();
