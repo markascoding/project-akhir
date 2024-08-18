@@ -16,7 +16,7 @@ class LessonController extends Controller
         $data = [
             'lessons' => Lesson::query()->orderBy('id', 'desc')->get(),
         ];
-        return view('lesson.index', $data);
+        return view('admin.lesson.index', $data);
     }
         /**
      * Show the form for creating a new resource.

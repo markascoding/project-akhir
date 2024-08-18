@@ -27,6 +27,7 @@ Route::resources([
     'teacher' => TeacherController::class,
     'lesson' => LessonController::class,
     'studyroom' => StudyRoomController::class,
+    'user' => App\Http\Controllers\UserController::class,
 ]);
 
 Auth::routes();
