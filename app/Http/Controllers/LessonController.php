@@ -13,16 +13,12 @@ class LessonController extends Controller
      */
     public function index()
     {
-<<<<<<< HEAD
-        return view('admin.lesson.index');
-=======
         $data = [
             'lessons' => Lesson::query()->orderBy('id', 'desc')->get(),
         ];
         return view('admin.lesson.index', $data);
->>>>>>> f67341acf53e570c5ff263354efecd6356bb75b5
     }
-        /**
+    /**
      * Show the form for creating a new resource.
      */
     public function create()

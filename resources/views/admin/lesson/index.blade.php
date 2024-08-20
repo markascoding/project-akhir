@@ -1,11 +1,7 @@
 @extends('admin.layout')
 
 @section('content')
-<<<<<<< HEAD
-    <h1 class="h3 mb-2 text-gray-800">Master Data - Kelas</h1>
-=======
     <h1 class="h3 mb-2 text-gray-800">Master Data - Mata Pelajaran</h1>
->>>>>>> f67341acf53e570c5ff263354efecd6356bb75b5
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
@@ -31,11 +27,7 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-<<<<<<< HEAD
-            <h6 class="m-0 font-weight-bold text-primary">Daftar Kelas</h6>
-=======
             <h6 class="m-0 font-weight-bold text-primary">Daftar Mata Pelajaran</h6>
->>>>>>> f67341acf53e570c5ff263354efecd6356bb75b5
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -44,11 +36,7 @@
                         <tr>
                             <th>No</th>
                             <th>id</th>
-<<<<<<< HEAD
-                            <th>Nama Kelas</th>
-=======
                             <th>Nama Mata Pelajaran</th>
->>>>>>> f67341acf53e570c5ff263354efecd6356bb75b5
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -56,29 +44,11 @@
                         <tr>
                             <th>No</th>
                             <th>id</th>
-<<<<<<< HEAD
-                            <th>Nama Kelas</th>
-=======
                             <th>Nama Mata Pelajaran</th>
->>>>>>> f67341acf53e570c5ff263354efecd6356bb75b5
                             <th>Aksi</th>
                         </tr>
                     </tfoot>
                     <tbody>
-<<<<<<< HEAD
-                        @foreach ($studyrooms as $studyroom)
-                            <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $studyroom->id }}</td>
-                                <td>{{ $studyroom->nama_kelas }}</td>
-                                <td class="d-lg-flex gap-2 ">
-
-                                    <button type="button" class="btn btn-sm btn-warning btn-edit"
-                                        data-id="{{ $studyroom->id }}">
-                                        <i class="fas fa-edit"></i>
-                                    </button>
-                                    <button data-id="{{ $studyroom->id }}" type="button" data-toggle="modal"
-=======
                         @foreach ($lessons as $lesson)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
@@ -91,7 +61,6 @@
                                         <i class="fas fa-edit"></i>
                                     </button>
                                     <button data-id="{{ $lesson->id }}" type="button" data-toggle="modal"
->>>>>>> f67341acf53e570c5ff263354efecd6356bb75b5
                                         data-target="#modal-default" class="btn btn-danger btn-sm btn-delete"><i
                                             class="fas fa-trash"></i></button>
                                 </td>
@@ -108,76 +77,74 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-<<<<<<< HEAD
-                    <h5 class="modal-title" id="exampleModalLabel">Tambah Data Kelas</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <<<<<<< HEAD <h5 class="modal-title" id="exampleModalLabel">Tambah Data Kelas</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form action="{{ route('studyroom.store') }}" method="POST">
                         @csrf
                         <div class="mb-3">
                             <label for="nama_kelas">Nama Kelas</label>
-                            <input type="text" name="nama_kelas" class="form-control"
-                                placeholder="Nama Kelas">
-=======
-                    <h5 class="modal-title" id="exampleModalLabel">Tambah Data Mata Pelajaran</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form action="{{ route('lesson.store') }}" method="POST">
-                        @csrf
-                        <div class="mb-3">
-                            <label for="mata_pelajaran">Nama Mata Pelajaran</label>
-                            <input type="text" name="mata_pelajaran" class="form-control"
-                                placeholder="Nama Mata Pelajaran">
->>>>>>> f67341acf53e570c5ff263354efecd6356bb75b5
+                            <input type="text" name="nama_kelas" class="form-control" placeholder="Nama Kelas">
+                            =======
+                            <h5 class="modal-title" id="exampleModalLabel">Tambah Data Mata Pelajaran</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
+                        <div class="modal-body">
+                            <form action="{{ route('lesson.store') }}" method="POST">
+                                @csrf
+                                <div class="mb-3">
+                                    <label for="mata_pelajaran">Nama Mata Pelajaran</label>
+                                    <input type="text" name="mata_pelajaran" class="form-control"
+                                        placeholder="Nama Mata Pelajaran">
+                                    >>>>>>> f67341acf53e570c5ff263354efecd6356bb75b5
+                                </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                            <button type="submit" class="btn btn-primary">Simpan</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- end modal tambah data -->
+        <!-- Modal ubah data -->
+        <div class="modal fade" id="modal-ubah" tabindex="-1" aria-labelledby="modal-ubah" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <<<<<<< HEAD <h5 class="modal-title" id="">Ubah Data Kelas</h5>
+                            =======
+                            <h5 class="modal-title" id="">Ubah Data Mata Pelajaran</h5>
+                            >>>>>>> f67341acf53e570c5ff263354efecd6356bb75b5
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="update">
+                            <input type="hidden" name="id" id="id">
+                            <div class="mb-3">
+                                <<<<<<< HEAD <label for="nama_kelas">Nama Kelas</label>
+                                    <input type="text" name="nama_kelas" class="form-control" id="nama_kelas"
+                                        placeholder="nama kelas">
+                            </div>
+                            =======
+                            <label for="mata_pelajaran">Nama Mata Pelajaran</label>
+                            <input type="text" name="mata_pelajaran" class="form-control" id="mata_pelajaran"
+                                placeholder="mata pelajaran">
+                    </div>
+                    >>>>>>> f67341acf53e570c5ff263354efecd6356bb75b5
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-primary">Simpan</button>
+                    {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button> --}}
+                    <button type="button" class="btn btn-primary btn-update">Ubah</button>
                 </div>
                 </form>
-            </div>
-        </div>
-    </div>
-    <!-- end modal tambah data -->
-<!-- Modal ubah data -->
-<div class="modal fade" id="modal-ubah" tabindex="-1" aria-labelledby="modal-ubah" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-<<<<<<< HEAD
-                <h5 class="modal-title" id="">Ubah Data Kelas</h5>
-=======
-                <h5 class="modal-title" id="">Ubah Data Mata Pelajaran</h5>
->>>>>>> f67341acf53e570c5ff263354efecd6356bb75b5
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form id="update">
-                    <input type="hidden" name="id" id="id">
-                    <div class="mb-3">
-<<<<<<< HEAD
-                        <label for="nama_kelas">Nama Kelas</label>
-                        <input type="text" name="nama_kelas" class="form-control" id="nama_kelas" placeholder="nama kelas">
-                        </div>
-=======
-                        <label for="mata_pelajaran">Nama Mata Pelajaran</label>
-                        <input type="text" name="mata_pelajaran" class="form-control" id="mata_pelajaran" placeholder="mata pelajaran">
-                    </div>
->>>>>>> f67341acf53e570c5ff263354efecd6356bb75b5
-            </div>
-            <div class="modal-footer">
-                {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button> --}}
-                <button type="button" class="btn btn-primary btn-update">Ubah</button>
-            </div>
-            </form>
 
+            </div>
         </div>
     </div>
-</div>
-<!-- end modal ubah data -->
+    <!-- end modal ubah data -->
 
     <!-- modal hapus  -->
     <div class="modal fade" id="modal-default">
@@ -213,35 +180,35 @@
     <script>
         $('.btn-delete').click(function(e) {
             e.preventDefault();
-            var id = $(this).data('id');
-<<<<<<< HEAD
-            var url = "{{ route('studyroom.destroy', ':id') }}".replace(':id', id);
-=======
-            var url = "{{ route('lesson.destroy', ':id') }}".replace(':id', id);
->>>>>>> f67341acf53e570c5ff263354efecd6356bb75b5
+            var id = $(this).data('id'); <<
+            << << < HEAD
+            var url = "{{ route('studyroom.destroy', ':id') }}".replace(':id', id); ===
+            === =
+            var url = "{{ route('lesson.destroy', ':id') }}".replace(':id', id); >>>
+            >>> > f67341acf53e570c5ff263354efecd6356bb75b5
             $('#form-delete').attr('action', url);
         });
     </script>
     <script>
         $('.btn-edit').click(function(e) {
             e.preventDefault();
-            var id = $(this).data('id');
-<<<<<<< HEAD
-            var url = "{{ route('studyroom.edit', ':id') }}".replace(':id', id);
-=======
-            var url = "{{ route('lesson.edit', ':id') }}".replace(':id', id);
->>>>>>> f67341acf53e570c5ff263354efecd6356bb75b5
+            var id = $(this).data('id'); <<
+            << << < HEAD
+            var url = "{{ route('studyroom.edit', ':id') }}".replace(':id', id); ===
+            === =
+            var url = "{{ route('lesson.edit', ':id') }}".replace(':id', id); >>>
+            >>> > f67341acf53e570c5ff263354efecd6356bb75b5
             $.ajax({
                 type: "GET",
                 url: url,
                 success: function(data) {
                     $('#modal-ubah').modal('show');
-                    $('#modal-ubah').find('#id').val(data.id);
-<<<<<<< HEAD
-                    $('#modal-ubah').find('#nama_kelas').val(data.nama_kelas);
-=======
-                    $('#modal-ubah').find('#mata_pelajaran').val(data.mata_pelajaran);
->>>>>>> f67341acf53e570c5ff263354efecd6356bb75b5
+                    $('#modal-ubah').find('#id').val(data.id); <<
+                    << << < HEAD
+                    $('#modal-ubah').find('#nama_kelas').val(data.nama_kelas); ===
+                    === =
+                    $('#modal-ubah').find('#mata_pelajaran').val(data.mata_pelajaran); >>>
+                    >>> > f67341acf53e570c5ff263354efecd6356bb75b5
                 }
 
             });
@@ -252,28 +219,29 @@
         $('.btn-update').click(function(e) {
             e.preventDefault();
 
-            let id = $('#id').val();
-<<<<<<< HEAD
+            let id = $('#id').val(); <<
+            << << < HEAD
             let nama_kelas = $('#nama_kelas').val();
             let token = $("meta[name='csrf-token']").attr("content");
-            var url = "{{ route('studyroom.update', ':id') }}".replace(':id', id);
-=======
+            var url = "{{ route('studyroom.update', ':id') }}".replace(':id', id); ===
+            === =
             let mata_pelajaran = $('#mata_pelajaran').val();
             let token = $("meta[name='csrf-token']").attr("content");
-            var url = "{{ route('lesson.update', ':id') }}".replace(':id', id);
->>>>>>> f67341acf53e570c5ff263354efecd6356bb75b5
+            var url = "{{ route('lesson.update', ':id') }}".replace(':id', id); >>>
+            >>> > f67341acf53e570c5ff263354efecd6356bb75b5
 
             $.ajax({
                 url: url,
                 type: 'PUT',
                 data: {
                     "id": id,
-<<<<<<< HEAD
-                    "nama_kelas": nama_kelas,
-=======
+                    <<
+                    << << < HEAD "nama_kelas": nama_kelas,
+                    ===
+                    === =
                     "mata_pelajaran": mata_pelajaran,
->>>>>>> f67341acf53e570c5ff263354efecd6356bb75b5
-                    "_token": token
+                    >>>
+                    >>> > f67341acf53e570c5ff263354efecd6356bb75b5 "_token": token
                 },
                 success: function(response) {
                     $('#modal-ubah').modal('hide');
