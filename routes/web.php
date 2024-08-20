@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\LessonController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\StudyRoomController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,7 +28,12 @@ Route::resources([
     'dashboard' => DashboardController::class,
     'teacher' => TeacherController::class,
     'lesson' => LessonController::class,
+<<<<<<< HEAD
     'user' => UserController::class,
+=======
+    'studyroom' => StudyRoomController::class,
+    'user' => App\Http\Controllers\UserController::class,
+>>>>>>> f67341acf53e570c5ff263354efecd6356bb75b5
 ]);
 
 Auth::routes();

@@ -37,7 +37,7 @@
              <div class="bg-white py-2 collapse-inner rounded">
                  <a class="collapse-item" href="{{ route('teacher.index') }}">Guru</a>
                  <a class="collapse-item" href="{{ route('lesson.index') }}">Mata Pelajaran</a>
-                 <a class="collapse-item" href="">Kelas</a>
+                 <a class="collapse-item" href="{{ route('studyroom.index') }}">Kelas</a>
              </div>
          </div>
      </li>

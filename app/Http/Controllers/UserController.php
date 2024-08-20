@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+<<<<<<< HEAD
 use App\Models\Teacher;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Hash;
+=======
+use Illuminate\Http\Request;
+>>>>>>> f67341acf53e570c5ff263354efecd6356bb75b5
 
 class UserController extends Controller
 {
@@ -16,10 +20,16 @@ class UserController extends Controller
     public function index()
     {
         $data = [
+<<<<<<< HEAD
             "users" => User::query()->orderBy('id', 'desc')->get(),
             "teachers" => Teacher::query()->orderBy('id', 'desc')->get(),
         ];
         return view('admin.akunPiket.index', $data);
+=======
+            'users' => User::query()->orderBy('id', 'desc')->get(),
+        ];
+        return view('admin.user.index', $data);
+>>>>>>> f67341acf53e570c5ff263354efecd6356bb75b5
     }
 
     /**
@@ -35,6 +45,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+<<<<<<< HEAD
         $name = $request->name;
         // cari data guru di tabel teacher
         $cariData = Teacher::query()->where('nama_guru', $name)->first();
@@ -52,6 +63,9 @@ class UserController extends Controller
         ]);
         dd($user);
         return redirect()->route('user.index')->with('success', 'Data berhasil disimpan');
+=======
+        //
+>>>>>>> f67341acf53e570c5ff263354efecd6356bb75b5
     }
 
     /**

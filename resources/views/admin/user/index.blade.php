@@ -1,11 +1,7 @@
 @extends('admin.layout')
 
 @section('content')
-<<<<<<< HEAD
-    <h1 class="h3 mb-2 text-gray-800">Master Data - Kelas</h1>
-=======
-    <h1 class="h3 mb-2 text-gray-800">Master Data - Mata Pelajaran</h1>
->>>>>>> f67341acf53e570c5ff263354efecd6356bb75b5
+    <h1 class="h3 mb-2 text-gray-800">Data User</h1>
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
@@ -31,11 +27,7 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-<<<<<<< HEAD
-            <h6 class="m-0 font-weight-bold text-primary">Daftar Kelas</h6>
-=======
-            <h6 class="m-0 font-weight-bold text-primary">Daftar Mata Pelajaran</h6>
->>>>>>> f67341acf53e570c5ff263354efecd6356bb75b5
+            <h6 class="m-0 font-weight-bold text-primary">Daftar User</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -44,11 +36,9 @@
                         <tr>
                             <th>No</th>
                             <th>id</th>
-<<<<<<< HEAD
-                            <th>Nama Kelas</th>
-=======
-                            <th>Nama Mata Pelajaran</th>
->>>>>>> f67341acf53e570c5ff263354efecd6356bb75b5
+                            <th>Nama</th>
+                            <th>Email</th>
+                            <th>Password</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -56,42 +46,27 @@
                         <tr>
                             <th>No</th>
                             <th>id</th>
-<<<<<<< HEAD
-                            <th>Nama Kelas</th>
-=======
-                            <th>Nama Mata Pelajaran</th>
->>>>>>> f67341acf53e570c5ff263354efecd6356bb75b5
+                            <th>Nama</th>
+                            <th>Email</th>
+                            <th>Password</th>
                             <th>Aksi</th>
                         </tr>
                     </tfoot>
                     <tbody>
-<<<<<<< HEAD
-                        @foreach ($studyrooms as $studyroom)
+                        @foreach ($users as $user)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $studyroom->id }}</td>
-                                <td>{{ $studyroom->nama_kelas }}</td>
+                                <td>{{ $user->id }}</td>
+                                <td>{{ $user->name }}</td>
+                                <td>{{ $user->email }}</td>
+                                <td>{{ $user->password }}</td>
                                 <td class="d-lg-flex gap-2 ">
 
                                     <button type="button" class="btn btn-sm btn-warning btn-edit"
-                                        data-id="{{ $studyroom->id }}">
+                                        data-id="{{ $user->id }}">
                                         <i class="fas fa-edit"></i>
                                     </button>
-                                    <button data-id="{{ $studyroom->id }}" type="button" data-toggle="modal"
-=======
-                        @foreach ($lessons as $lesson)
-                            <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $lesson->id }}</td>
-                                <td>{{ $lesson->mata_pelajaran }}</td>
-                                <td class="d-lg-flex gap-2 ">
-
-                                    <button type="button" class="btn btn-sm btn-warning btn-edit"
-                                        data-id="{{ $lesson->id }}">
-                                        <i class="fas fa-edit"></i>
-                                    </button>
-                                    <button data-id="{{ $lesson->id }}" type="button" data-toggle="modal"
->>>>>>> f67341acf53e570c5ff263354efecd6356bb75b5
+                                    <button data-id="{{ $user->id }}" type="button" data-toggle="modal"
                                         data-target="#modal-default" class="btn btn-danger btn-sm btn-delete"><i
                                             class="fas fa-trash"></i></button>
                                 </td>
@@ -108,29 +83,26 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-<<<<<<< HEAD
-                    <h5 class="modal-title" id="exampleModalLabel">Tambah Data Kelas</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Tambah Data User</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('studyroom.store') }}" method="POST">
+                    <form action="{{ route('user.store') }}" method="POST">
                         @csrf
                         <div class="mb-3">
-                            <label for="nama_kelas">Nama Kelas</label>
-                            <input type="text" name="nama_kelas" class="form-control"
-                                placeholder="Nama Kelas">
-=======
-                    <h5 class="modal-title" id="exampleModalLabel">Tambah Data Mata Pelajaran</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form action="{{ route('lesson.store') }}" method="POST">
-                        @csrf
+                            <label for="name">Nama</label>
+                            <input type="text" name="name" class="form-control"
+                                placeholder="Nama User">
+                        </div>
                         <div class="mb-3">
-                            <label for="mata_pelajaran">Nama Mata Pelajaran</label>
-                            <input type="text" name="mata_pelajaran" class="form-control"
-                                placeholder="Nama Mata Pelajaran">
->>>>>>> f67341acf53e570c5ff263354efecd6356bb75b5
+                            <label for="email">Email</label>
+                            <input type="text" name="email" class="form-control"
+                                placeholder="Email User">
+                        </div>
+                        <div class="mb-3">
+                            <label for="password">Password</label>
+                            <input type="text" name="password" class="form-control"
+                                placeholder="Password User">
                         </div>
                 </div>
                 <div class="modal-footer">
@@ -147,26 +119,24 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-<<<<<<< HEAD
-                <h5 class="modal-title" id="">Ubah Data Kelas</h5>
-=======
-                <h5 class="modal-title" id="">Ubah Data Mata Pelajaran</h5>
->>>>>>> f67341acf53e570c5ff263354efecd6356bb75b5
+                <h5 class="modal-title" id="">Ubah Data User</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form id="update">
                     <input type="hidden" name="id" id="id">
                     <div class="mb-3">
-<<<<<<< HEAD
-                        <label for="nama_kelas">Nama Kelas</label>
-                        <input type="text" name="nama_kelas" class="form-control" id="nama_kelas" placeholder="nama kelas">
-                        </div>
-=======
-                        <label for="mata_pelajaran">Nama Mata Pelajaran</label>
-                        <input type="text" name="mata_pelajaran" class="form-control" id="mata_pelajaran" placeholder="mata pelajaran">
+                        <label for="name">Nama</label>
+                        <input type="text" name="name" class="form-control" id="name" placeholder="nama">
                     </div>
->>>>>>> f67341acf53e570c5ff263354efecd6356bb75b5
+                    <div class="mb-3">
+                        <label for="email">Email</label>
+                        <input type="text" name="email" class="form-control" id="email" placeholder="email">
+                    </div>
+                    <div class="mb-3">
+                        <label for="password">Password</label>
+                        <input type="text" name="password" class="form-control" id="password" placeholder="password">
+                    </div>
             </div>
             <div class="modal-footer">
                 {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button> --}}
@@ -214,11 +184,7 @@
         $('.btn-delete').click(function(e) {
             e.preventDefault();
             var id = $(this).data('id');
-<<<<<<< HEAD
-            var url = "{{ route('studyroom.destroy', ':id') }}".replace(':id', id);
-=======
-            var url = "{{ route('lesson.destroy', ':id') }}".replace(':id', id);
->>>>>>> f67341acf53e570c5ff263354efecd6356bb75b5
+            var url = "{{ route('user.destroy', ':id') }}".replace(':id', id);
             $('#form-delete').attr('action', url);
         });
     </script>
@@ -226,22 +192,16 @@
         $('.btn-edit').click(function(e) {
             e.preventDefault();
             var id = $(this).data('id');
-<<<<<<< HEAD
-            var url = "{{ route('studyroom.edit', ':id') }}".replace(':id', id);
-=======
-            var url = "{{ route('lesson.edit', ':id') }}".replace(':id', id);
->>>>>>> f67341acf53e570c5ff263354efecd6356bb75b5
+            var url = "{{ route('user.edit', ':id') }}".replace(':id', id);
             $.ajax({
                 type: "GET",
                 url: url,
                 success: function(data) {
                     $('#modal-ubah').modal('show');
                     $('#modal-ubah').find('#id').val(data.id);
-<<<<<<< HEAD
-                    $('#modal-ubah').find('#nama_kelas').val(data.nama_kelas);
-=======
-                    $('#modal-ubah').find('#mata_pelajaran').val(data.mata_pelajaran);
->>>>>>> f67341acf53e570c5ff263354efecd6356bb75b5
+                    $('#modal-ubah').find('#name').val(data.name);
+                    $('#modal-ubah').find('#email').val(data.email);
+                    $('#modal-ubah').find('#password').val(data.password);
                 }
 
             });
@@ -253,26 +213,20 @@
             e.preventDefault();
 
             let id = $('#id').val();
-<<<<<<< HEAD
-            let nama_kelas = $('#nama_kelas').val();
+            let name = $('#name').val();
+            let email = $('#email').val();
+            let password = $('#password').val();
             let token = $("meta[name='csrf-token']").attr("content");
-            var url = "{{ route('studyroom.update', ':id') }}".replace(':id', id);
-=======
-            let mata_pelajaran = $('#mata_pelajaran').val();
-            let token = $("meta[name='csrf-token']").attr("content");
-            var url = "{{ route('lesson.update', ':id') }}".replace(':id', id);
->>>>>>> f67341acf53e570c5ff263354efecd6356bb75b5
+            var url = "{{ route('user.update', ':id') }}".replace(':id', id);
 
             $.ajax({
                 url: url,
                 type: 'PUT',
                 data: {
                     "id": id,
-<<<<<<< HEAD
-                    "nama_kelas": nama_kelas,
-=======
-                    "mata_pelajaran": mata_pelajaran,
->>>>>>> f67341acf53e570c5ff263354efecd6356bb75b5
+                    "name": name,
+                    "email": email,
+                    "password": password,
                     "_token": token
                 },
                 success: function(response) {

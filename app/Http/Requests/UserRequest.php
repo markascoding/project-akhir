@@ -2,7 +2,10 @@
 
 namespace App\Http\Requests;
 
+<<<<<<< HEAD
 use Illuminate\Validation\Rule;
+=======
+>>>>>>> f67341acf53e570c5ff263354efecd6356bb75b5
 use Illuminate\Foundation\Http\FormRequest;
 
 class UserRequest extends FormRequest
@@ -24,6 +27,7 @@ class UserRequest extends FormRequest
     {
         return [
             'name' => 'required',
+<<<<<<< HEAD
             'role' => 'required',
             'email' => ['required', 'email', Rule::unique('user', 'email')->ignore($this->user)],
         ];
@@ -36,4 +40,20 @@ class UserRequest extends FormRequest
             'email.unique' => 'Gagal Tambah Data, Email sudah digunakan',
         ];
     }
+=======
+            'email' => 'required|email',
+            'password' => 'required',
+        ];
+    }
+    function messages()
+    {
+        return [
+            'name.required' => 'Gagal Tambah Data, Nama wajib diisi',
+            'email.required' => 'Gagal Tambah Data, Email wajib diisi',
+            'email.email' => 'Gagal Tambah Data, Format email salah',
+            'password.required' => 'Gagal Tambah Data, Password wajib diisi',
+        ];
+    }
+
+>>>>>>> f67341acf53e570c5ff263354efecd6356bb75b5
 }
