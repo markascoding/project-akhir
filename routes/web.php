@@ -1,9 +1,11 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\LessonController;
+use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\DashboardController;
 
 /*
@@ -25,6 +27,7 @@ Route::resources([
     'dashboard' => DashboardController::class,
     'teacher' => TeacherController::class,
     'lesson' => LessonController::class,
+    'user' => UserController::class,
 ]);
 
 Auth::routes();

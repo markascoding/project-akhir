@@ -44,9 +44,9 @@
 
      <!-- Nav Item - Utilities Collapse Menu -->
      <li class="nav-item">
-         <a class="nav-link" href="#" aria-expanded="true" aria-controls="collapseUtilities">
+         <a class="nav-link" href="{{ route('user.index') }}" aria-expanded="true" aria-controls="collapseUtilities">
              <i class="fas fa-fw fa-wrench"></i>
-             <span>Akun Guru Piket</span>
+             <span>Guru Piket</span>
          </a>
 
      </li>

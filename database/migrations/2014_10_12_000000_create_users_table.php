@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             // $table->timestamp('email_verified_at')->nullable();
+            // $table->foreignId('id_teacher')->references('id_teacher')->on('teachers')->onDelete('cascade');
             $table->string('password');
             $table->enum('role', ['admin', 'kepsek', 'guru_piket']);
             $table->enum('status', ['active', 'blocked']);
