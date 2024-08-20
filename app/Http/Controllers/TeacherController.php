@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\TeacherRequest;
+use App\Models\User;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
 
 use function Laravel\Prompts\alert;
+use App\Http\Requests\TeacherRequest;
 
 class TeacherController extends Controller
 {
@@ -65,7 +66,7 @@ class TeacherController extends Controller
     {
         $data = $request->validated();
         Teacher::query()->findOrFail($id)->update($data);
-        return response()->json(['success' => 'Data berhasil diubah']);
+        return response()->json(['message' => 'Data berhasil diubah']);
         // return redirect()->route('teacher.index')->with('success', 'Data berhasil diubah');
     }
     /**

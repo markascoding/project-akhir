@@ -231,6 +231,12 @@
                     "_token": token
                 },
                 success: function(response) {
+                    Swal.fire({
+                        title: 'Berhasil',
+                        text: response.message,
+                        icon: 'success',
+                        timer: 10000,
+                    });
                     $('#modal-ubah').modal('hide');
                     location.reload(); // Refresh halaman untuk melihat perubahan
                 },

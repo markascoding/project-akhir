@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Hash;
 
@@ -41,16 +42,21 @@ class UserController extends Controller
         // ambil email dari data guru
         $email = $cariData->email;
 
+        // cek apakah email sudah ada di database
+        $user = User::query()->where('email', $email)->first();
+        // jika sudah ada, tampilkan pesan error
+        if ($user) {
+            return redirect()->route('user.index')->with('error', 'Akun sudah ada');
+        };
+
         $password = Hash::make('123456');
         $role = $request->role;
-        // dd($role);
         $user = User::create([
             'name' => $name,
             'email' => $email,
             'password' => $password,
-            'role' => $role,
+            'role' =>  $role,
         ]);
-        dd($user);
         return redirect()->route('user.index')->with('success', 'Data berhasil disimpan');
     }
 
@@ -83,6 +89,8 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $user = User::query()->where('id', $id)->first();
+        $user->delete();
+        return redirect()->route('user.index')->with('success', 'Data berhasil dihapus');
     }
 }

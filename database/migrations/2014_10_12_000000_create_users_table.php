@@ -18,8 +18,8 @@ return new class extends Migration
             // $table->timestamp('email_verified_at')->nullable();
             // $table->foreignId('id_teacher')->references('id_teacher')->on('teachers')->onDelete('cascade');
             $table->string('password');
-            $table->enum('role', ['admin', 'kepsek', 'guru_piket']);
-            $table->enum('status', ['active', 'blocked']);
+            $table->enum('role', ['admin', 'kepsek', 'guru_piket'])->default('guru_piket');
+            // $table->enum('status', ['active', 'blocked']);
             // $table->rememberToken();
             $table->timestamps();
         });
