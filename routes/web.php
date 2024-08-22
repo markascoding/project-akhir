@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\LessonController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PiketController;
 use App\Http\Controllers\StudyRoomController;
 
 /*
@@ -31,6 +32,7 @@ Route::resources([
     'lesson' => LessonController::class,
     'studyroom' => StudyRoomController::class,
     'user' => UserController::class,
+    'piket' => PiketController::class,
 ]);
 
 Auth::routes();

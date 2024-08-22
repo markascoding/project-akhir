@@ -1,7 +1,7 @@
-@extends('admin.layout')
+@extends('piket.layout')
 
 @section('content')
-    <h1 class="h3 mb-2 text-gray-800">Master Data - Mata Pelajaran</h1>
+    <h1 class="h3 mb-2 text-gray-800">Jurnal Piket</h1>
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
@@ -27,7 +27,7 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Daftar Mata Pelajaran</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Daftar Jurnal Piket</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -35,43 +35,42 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Nama Mata Pelajaran</th>
+                            <th>Nama Guru Piket</th>
+                            <th>Nama Guru Kelas</th>
+                            <th>Mata Pelajaran</th>
+                            <th>Waktu Mulai</th>
+                            <th>Waktu Selesai</th>
+                            <th>Status</th>
+                            <th>Keterangan</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
                             <th>No</th>
-                            <th>Nama Mata Pelajaran</th>
+                            <th>Nama Guru Piket</th>
+                            <th>Nama Guru Kelas</th>
+                            <th>Mata Pelajaran</th>
+                            <th>Waktu Mulai</th>
+                            <th>Waktu Selesai</th>
+                            <th>Status</th>
+                            <th>Keterangan</th>
                             <th>Aksi</th>
                         </tr>
                     </tfoot>
                     <tbody>
-                        @foreach ($lessons as $lesson)
+                        @foreach ($pikets as $piket)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $lesson->mata_pelajaran }}</td>
+                                <td>{{ $piket->id }}</td>
+                                <td>{{ $piket->nama_kelas }}</td>
                                 <td class="d-lg-flex gap-2 ">
 
                                     <button type="button" class="btn btn-sm btn-warning btn-edit"
-                                        data-id="{{ $lesson->id }}">
+                                        data-id="{{ $piket->id }}">
                                         <i class="fas fa-edit"></i>
                                     </button>
-                                    <button data-id="{{ $lesson->id }}" type="button" data-toggle="modal"
-                                        data-target="#modal-default" class="btn btn-danger btn-sm btn-delete"><i
-                                            class="fas fa-trash"></i></button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $lesson->mata_pelajaran }}</td>
-                                <td class="d-lg-flex gap-2 ">
-
-                                    <button type="button" class="btn btn-sm btn-warning btn-edit"
-                                        data-id="{{ $lesson->id }}">
-                                        <i class="fas fa-edit"></i>
-                                    </button>
-                                    <button data-id="{{ $lesson->id }}" type="button" data-toggle="modal"
+                                    <button data-id="{{ $piket->id }}" type="button" data-toggle="modal"
                                         data-target="#modal-default" class="btn btn-danger btn-sm btn-delete"><i
                                             class="fas fa-trash"></i></button>
                                 </td>
@@ -88,16 +87,16 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Tambah Data Mata Pelajaran</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Tambah Data</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('lesson.store') }}" method="POST">
+                    <form action="{{ route('piket.store') }}" method="POST">
                         @csrf
                         <div class="mb-3">
-                            <label for="nama_kelas">Nama Mata Pelajaran</label>
+                            <label for="nama_kelas">Nama Kelas</label>
                             <input type="text" name="nama_kelas" class="form-control"
-                                placeholder="Nama Mata Pelajaran">
+                                placeholder="Nama Kelas">
                         </div>
                 </div>
                 <div class="modal-footer">
@@ -114,16 +113,16 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="">Ubah Data Mata Pelajaran</h5>
+                <h5 class="modal-title" id="">Ubah Data</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form id="update">
                     <input type="hidden" name="id" id="id">
                     <div class="mb-3">
-                        <label for="nama_mata_pelajaran">Nama Mata Pelajaran</label>
-                        <input type="text" name="nama_mata_pelajaran" class="form-control" id="nama_mata_pelajaran" placeholder="nama mata pelajaran">
-                       </div>
+                        <label for="nama_kelas">Nama Kelas</label>
+                        <input type="text" name="nama_kelas" class="form-control" id="nama_kelas" placeholder="nama kelas">
+                        </div>
             </div>
             <div class="modal-footer">
                 {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button> --}}
@@ -171,7 +170,7 @@
         $('.btn-delete').click(function(e) {
             e.preventDefault();
             var id = $(this).data('id');
-            var url = "{{ route('lesson.destroy', ':id') }}".replace(':id', id);
+            var url = "{{ route('piket.destroy', ':id') }}".replace(':id', id);
             $('#form-delete').attr('action', url);
         });
     </script>
@@ -179,14 +178,14 @@
         $('.btn-edit').click(function(e) {
             e.preventDefault();
             var id = $(this).data('id');
-            var url = "{{ route('lesson.edit', ':id') }}".replace(':id', id);
+            var url = "{{ route('piket.edit', ':id') }}".replace(':id', id);
             $.ajax({
                 type: "GET",
                 url: url,
                 success: function(data) {
                     $('#modal-ubah').modal('show');
                     $('#modal-ubah').find('#id').val(data.id);
-                    $('#modal-ubah').find('#nama_mata_pelajaran').val(data.nama_mata_pelajaran);
+                    $('#modal-ubah').find('#nama_kelas').val(data.nama_kelas);
                 }
 
             });
@@ -198,16 +197,16 @@
             e.preventDefault();
 
             let id = $('#id').val();
-            let nama_kelas = $('#nama_mata_pelajaran').val();
+            let nama_kelas = $('#nama_kelas').val();
             let token = $("meta[name='csrf-token']").attr("content");
-            var url = "{{ route('lesson.update', ':id') }}".replace(':id', id);
+            var url = "{{ route('piket.update', ':id') }}".replace(':id', id);
 
             $.ajax({
                 url: url,
                 type: 'PUT',
                 data: {
                     "id": id,
-                    "nama_mata_pelajaran": nama_mata_pelajaran,
+                    "nama_kelas": nama_kelas,
                     "_token": token
                 },
                 success: function(response) {

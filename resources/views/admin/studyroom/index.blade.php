@@ -35,7 +35,6 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>id</th>
                             <th>Nama Kelas</th>
                             <th>Aksi</th>
                         </tr>
@@ -43,7 +42,6 @@
                     <tfoot>
                         <tr>
                             <th>No</th>
-                            <th>id</th>
                             <th>Nama Kelas</th>
                             <th>Aksi</th>
                         </tr>
@@ -52,7 +50,6 @@
                         @foreach ($studyrooms as $studyroom)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $studyroom->id }}</td>
                                 <td>{{ $studyroom->nama_kelas }}</td>
                                 <td class="d-lg-flex gap-2 ">
 
