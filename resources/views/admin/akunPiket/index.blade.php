@@ -51,18 +51,17 @@
                     <tbody>
                         @foreach ($users as $user)
                             <tr>
-                                {{-- @if ($user->role != 'admin' && $user->role != 'kepsek') --}}
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->role }}</td>
                                 <td class="d-lg-flex gap-2 ">
-
-                                    <button data-id="{{ $user->id }}" type="button" data-toggle="modal"
-                                        data-target="#modal-default" class="btn btn-danger btn-sm btn-delete"><i
-                                            class="fas fa-trash"></i></button>
+                                    @if ($user->role != 'admin' && $user->role != 'kepsek')
+                                        <button data-id="{{ $user->id }}" type="button" data-toggle="modal"
+                                            data-target="#modal-default" class="btn btn-danger btn-sm btn-delete"><i
+                                                class="fas fa-trash"></i></button>
+                                    @endif
                                 </td>
-                                {{-- @endif --}}
                             </tr>
                         @endforeach
 

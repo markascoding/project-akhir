@@ -61,7 +61,7 @@
 
      <!-- Nav Item - Pages Collapse Menu -->
      <li class="nav-item">
-         <a class="nav-link " href="#" aria-expanded="true" aria-controls="collapsePages">
+         <a class="nav-link " href="{{ route('jurnal.index') }}" aria-expanded="true" aria-controls="collapsePages">
              <i class="fas fa-fw fa-table"></i>
              <span>Daftar Jurnal</span>
          </a>

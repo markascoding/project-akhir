@@ -9,6 +9,7 @@ use App\Http\Controllers\LessonController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PiketController;
+use App\Http\Controllers\JournalController;
 use App\Http\Controllers\StudyRoomController;
 
 /*

@@ -82,8 +82,7 @@
                         @csrf
                         <div class="mb-3">
                             <label for="nama_kelas">Nama Kelas</label>
-                            <input type="text" name="nama_kelas" class="form-control"
-                                placeholder="Nama Kelas">
+                            <input type="text" name="nama_kelas" class="form-control" placeholder="Nama Kelas">
                         </div>
                 </div>
                 <div class="modal-footer">
@@ -95,32 +94,33 @@
         </div>
     </div>
     <!-- end modal tambah data -->
-<!-- Modal ubah data -->
-<div class="modal fade" id="modal-ubah" tabindex="-1" aria-labelledby="modal-ubah" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="">Ubah Data Kelas</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form id="update">
-                    <input type="hidden" name="id" id="id">
-                    <div class="mb-3">
-                        <label for="nama_kelas">Nama Kelas</label>
-                        <input type="text" name="nama_kelas" class="form-control" id="nama_kelas" placeholder="nama kelas">
+    <!-- Modal ubah data -->
+    <div class="modal fade" id="modal-ubah" tabindex="-1" aria-labelledby="modal-ubah" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="">Ubah Data Kelas</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="update">
+                        <input type="hidden" name="id" id="id">
+                        <div class="mb-3">
+                            <label for="nama_kelas">Nama Kelas</label>
+                            <input type="text" name="nama_kelas" class="form-control" id="nama_kelas"
+                                placeholder="nama kelas">
                         </div>
-            </div>
-            <div class="modal-footer">
-                {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button> --}}
-                <button type="button" class="btn btn-primary btn-update">Ubah</button>
-            </div>
-            </form>
+                </div>
+                <div class="modal-footer">
+                    {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button> --}}
+                    <button type="button" class="btn btn-primary btn-update">Ubah</button>
+                </div>
+                </form>
 
+            </div>
         </div>
     </div>
-</div>
-<!-- end modal ubah data -->
+    <!-- end modal ubah data -->
 
     <!-- modal hapus  -->
     <div class="modal fade" id="modal-default">
