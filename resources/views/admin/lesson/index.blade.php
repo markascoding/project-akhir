@@ -53,19 +53,6 @@
                                 <td>{{ $lesson->mata_pelajaran }}</td>
                                 <td class="d-lg-flex gap-2 ">
 
-                                    <button type="button" class="btn btn-sm btn-warning btn-edit"
-                                        data-id="{{ $lesson->id }}">
-                                        <i class="fas fa-edit"></i>
-                                    </button>
-                                    <button data-id="{{ $lesson->id }}" type="button" data-toggle="modal"
-                                        data-target="#modal-default" class="btn btn-danger btn-sm btn-delete"><i
-                                            class="fas fa-trash"></i></button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $lesson->mata_pelajaran }}</td>
-                                <td class="d-lg-flex gap-2 ">
 
                                     <button type="button" class="btn btn-sm btn-warning btn-edit"
                                         data-id="{{ $lesson->id }}">
