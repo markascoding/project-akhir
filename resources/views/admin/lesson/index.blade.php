@@ -35,14 +35,14 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Nama Mata Pelajaran</th>
+                            <th>Mata Pelajaran</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
                             <th>No</th>
-                            <th>Nama Mata Pelajaran</th>
+                            <th>Mata Pelajaran</th>
                             <th>Aksi</th>
                         </tr>
                     </tfoot>
@@ -82,8 +82,8 @@
                     <form action="{{ route('lesson.store') }}" method="POST">
                         @csrf
                         <div class="mb-3">
-                            <label for="nama_kelas">Nama Mata Pelajaran</label>
-                            <input type="text" name="nama_kelas" class="form-control"
+                            <label for="mata_pelajaran">Nama Mata Pelajaran</label>
+                            <input type="text" name="mata_pelajaran" class="form-control"
                                 placeholder="Nama Mata Pelajaran">
                         </div>
                 </div>
@@ -108,8 +108,8 @@
                 <form id="update">
                     <input type="hidden" name="id" id="id">
                     <div class="mb-3">
-                        <label for="nama_mata_pelajaran">Nama Mata Pelajaran</label>
-                        <input type="text" name="nama_mata_pelajaran" class="form-control" id="nama_mata_pelajaran" placeholder="nama mata pelajaran">
+                        <label for="mata_pelajaran">Nama Mata Pelajaran</label>
+                        <input type="text" name="mata_pelajaran" class="form-control" id="mata_pelajaran" placeholder="nama mata pelajaran">
                        </div>
             </div>
             <div class="modal-footer">
@@ -173,7 +173,7 @@
                 success: function(data) {
                     $('#modal-ubah').modal('show');
                     $('#modal-ubah').find('#id').val(data.id);
-                    $('#modal-ubah').find('#nama_mata_pelajaran').val(data.nama_mata_pelajaran);
+                    $('#modal-ubah').find('#mata_pelajaran').val(data.mata_pelajaran);
                 }
 
             });
@@ -185,7 +185,7 @@
             e.preventDefault();
 
             let id = $('#id').val();
-            let nama_kelas = $('#nama_mata_pelajaran').val();
+            let mata_pelajaran = $('#mata_pelajaran').val();
             let token = $("meta[name='csrf-token']").attr("content");
             var url = "{{ route('lesson.update', ':id') }}".replace(':id', id);
 
@@ -194,10 +194,16 @@
                 type: 'PUT',
                 data: {
                     "id": id,
-                    "nama_mata_pelajaran": nama_mata_pelajaran,
+                    "mata_pelajaran": mata_pelajaran,
                     "_token": token
                 },
                 success: function(response) {
+                    Swal.fire({
+                        title: 'Berhasil',
+                        text: response.message,
+                        icon: 'success',
+                        timer: 10000,
+                    });
                     $('#modal-ubah').modal('hide');
                     location.reload(); // Refresh halaman untuk melihat perubahan
                 },

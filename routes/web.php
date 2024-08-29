@@ -10,6 +10,7 @@ use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PiketController;
 use App\Http\Controllers\JournalController;
+use App\Http\Controllers\JournalPController;
 use App\Http\Controllers\StudyRoomController;
 
 /*
@@ -34,6 +35,8 @@ Route::resources([
     'studyroom' => StudyRoomController::class,
     'user' => UserController::class,
     'piket' => PiketController::class,
+    'jurnal' => JournalController::class,
+    'jurnal-p' => JournalPController::class,
 ]);
 
 Auth::routes();
