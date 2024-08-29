@@ -35,6 +35,7 @@
                     <thead>
                         <tr>
                             <th>No</th>
+                            <th>Tanggal</th>
                             <th>Kelas</th>
                             <th>Jam Mulai</th>
                             <th>Jam Selesai</th>
@@ -48,6 +49,7 @@
                     <tfoot>
                         <tr>
                             <th>No</th>
+                            <th>Tanggal</th>
                             <th>Kelas</th>
                             <th>Jam Mulai</th>
                             <th>Jam Selesai</th>
@@ -59,23 +61,24 @@
                         </tr>
                     </tfoot>
                     <tbody>
-                        @foreach ($journals as $jurnal-p)
+                        @foreach ($journals as $jurnalp)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $jurnal-p->nama_kelas }}</td>
-                                <td>{{ $jurnal-p->jp_mulai }}</td>
-                                <td>{{ $jurnal-p->jp_selesai }}</td>
-                                <td>{{ $jurnal-p->nama_guru }}</td>
-                                <td>{{ $jurnal-p->mata_pelajaran }}</td>
-                                <td>{{ $jurnal-p->status }}</td>
-                                <td>{{ $jurnal-p->keterangan }}</td>
+                                <td>{{ $jurnalp->cretaed_at->format('dddd, D-M-Y') }}</td>
+                                <td>{{ $jurnalp->nama_kelas }}</td>
+                                <td>{{ $jurnalp->jp_mulai }}</td>
+                                <td>{{ $jurnalp->jp_selesai }}</td>
+                                <td>{{ $jurnalp->nama_guru }}</td>
+                                <td>{{ $jurnalp->mata_pelajaran }}</td>
+                                <td>{{ $jurnalp->status }}</td>
+                                <td>{{ $jurnalp->keterangan }}</td>
                                 <td class="d-lg-flex gap-2 ">
 
                                     <button type="button" class="btn btn-sm btn-warning btn-edit"
-                                        data-id="{{ $jurnal-p->id }}">
+                                        data-id="{{ $jurnalp->id }}">
                                         <i class="fas fa-edit"></i>
                                     </button>
-                                    <button data-id="{{ $jurnal-p->id }}" type="button" data-toggle="modal"
+                                    <button data-id="{{ $jurnalp->id }}" type="button" data-toggle="modal"
                                         data-target="#modal-default" class="btn btn-danger btn-sm btn-delete"><i
                                             class="fas fa-trash"></i></button>
                                 </td>
@@ -96,11 +99,15 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('JournalP.store') }}" method="POST">
+                    <form action="{{ route('jurnalp.store') }}" method="POST">
                         @csrf
                         <div class="mb-3">
                             <label for="nama_kelas">Kelas</label>
-                            <input type="text" name="nama_kelas" class="form-control" placeholder="Nama Kelas">
+                            <select name="kelas" class="form-control" id="kelas">
+                                @foreach ($StudyRoom as $room)
+                                <option value="{{ $room->id }}">{{ $room->nama_kelas }}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="mb-3">
                             <label for="jp_mulai">Jam Mulai</label>
@@ -112,11 +119,19 @@
                         </div>
                         <div class="mb-3">
                             <label for="nama_guru">Guru</label>
-                            <input type="text" name="nama_guru" class="form-control" placeholder="Guru">
+                            <select name="guru" class="form-control" id="guru">
+                                @foreach ($Teacher as $teacher)
+                                <option value="{{ $teacher->id }}">{{ $teacher->nama_guru }}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="mb-3">
                             <label for="mata_pelajaran">Mata Pelajaran</label>
-                            <input type="text" name="mata_pelajaran" class="form-control" placeholder="Mapel">
+                            <select name="mata_pelajaran" class="form-control" id="mata_pelajaran">
+                                @foreach ($Lesson as $lesson)
+                                <option value="{{ $lesson->id }}">{{ $lesson->mata_pelajaran }}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="mb-3">
                             <label for="status">Status</label>
@@ -229,7 +244,7 @@
         $('.btn-delete').click(function(e) {
             e.preventDefault();
             var id = $(this).data('id');
-            var url = "{{ route('JournalP.destroy', ':id') }}".replace(':id', id);
+            var url = "{{ route('jurnalp.destroy', ':id') }}".replace(':id', id);
             $('#form-delete').attr('action', url);
         });
     </script>
@@ -237,7 +252,7 @@
         $('.btn-edit').click(function(e) {
             e.preventDefault();
             var id = $(this).data('id');
-            var url = "{{ route('JournalP.edit', ':id') }}".replace(':id', id);
+            var url = "{{ route('jurnalp.edit', ':id') }}".replace(':id', id);
             $.ajax({
                 type: "GET",
                 url: url,
@@ -270,7 +285,7 @@
             let status = $('#status').val();
             let keterangan = $('#keterangan').val();
             let token = $("meta[name='csrf-token']").attr("content");
-            var url = "{{ route('JournalP.update', ':id') }}".replace(':id', id);
+            var url = "{{ route('jurnalp.update', ':id') }}".replace(':id', id);
 
             $.ajax({
                 url: url,

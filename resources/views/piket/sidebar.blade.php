@@ -13,23 +13,10 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-        <a class="nav-link" href="{{ route('piket.index') }}">
+        <a class="nav-link" href="{{ route('jurnalp.index') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>JURNAL PIKET</span></a>
     </li>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider">
-
-    <!-- Heading -->
-
-
-    <!-- Divider -->
-    <hr class="sidebar-divider">
-
-    <!-- Heading -->
-
-    <!-- Nav Item - Pages Collapse Menu -->
 
     <!-- Divider -->
     <hr class="sidebar-divider">

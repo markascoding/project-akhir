@@ -12,7 +12,6 @@ class Journal extends Model
     protected $table = 'journals';
     protected $primaryKey = 'id';
     protected $fillable = [
-        'tanggal',
         'id_teacher',
         'id_studyroom',
         'id_lesson',

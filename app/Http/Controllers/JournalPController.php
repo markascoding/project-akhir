@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\JournalRequest;
 use App\Models\Journal;
+use App\Models\Lesson;
+use App\Models\Studyroom;
+use App\Models\Teacher;
 use Illuminate\Http\Request;
 
 class JournalPController extends Controller
@@ -15,6 +18,9 @@ class JournalPController extends Controller
     {
         $data = [
             'journals' => Journal::query()->orderBy('id', 'desc')->get(),
+            'StudyRoom' => Studyroom::query()->orderBy('id', 'desc')->get(),
+            'Lesson' => Lesson::query()->orderBy('id', 'desc')->get(),
+            'Teacher' => Teacher::query()->orderBy('id', 'desc')->get(),
         ];
         return view('piket.index', $data);
     }
